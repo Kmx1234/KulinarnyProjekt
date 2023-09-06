@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodawanie Składników</title>
+</head>
+<body>
+<h1>Dodawanie Składników do Przepisu</h1>
+<form action="/addIngredients" method="post">
+    <input type="hidden" name="recipeId" value="<!-- Tutaj wstaw ID nowoutworzonego przepisu -->">
+
+    <div>
+        <label for="ingredient">Składnik:</label>
+        <input type="text" id="ingredient" name="ingredient" required>
+    </div>
+
+    <div>
+        <label for="quantity">Ilość:</label>
+        <input type="number" id="quantity" name="quantity" required>
+    </div>
+
+    <button type="submit">Dodaj Składnik</button>
+</form>
+</body>
+</html>

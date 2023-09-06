@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Utwórz przepis</title>
+</head>
+<body>
+<h1>Utwórz przepis</h1>
+<form action="/addRecipe/createRecipe" method="post">
+    <label for="title">Tytuł:</label>
+    <input type="text" id="title" name="title" placeholder="Tytuł przepisu" required>
+    <br>
+    <label for="description">Opis:</label>
+    <textarea id="description" name="description" placeholder="Opis przepisu" required></textarea>
+    <br>
+    <button type="submit">Zapisz przepis</button>
+</form>
+</body>
+</html>
