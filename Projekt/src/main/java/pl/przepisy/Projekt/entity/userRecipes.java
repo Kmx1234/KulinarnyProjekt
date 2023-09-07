@@ -5,14 +5,15 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "users_recipes")
 public class userRecipes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "users_id")
-    private pl.przepisy.Projekt.entity.user user;
+    @JoinColumn(name = "user_id")
+    private user user;
     @ManyToOne
     @JoinColumn(name = "recipe_id")
-    private pl.przepisy.Projekt.entity.recipe recipe;
+    private recipe recipe;
 }

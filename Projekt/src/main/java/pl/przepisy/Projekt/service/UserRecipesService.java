@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pl.przepisy.Projekt.entity.userRecipes;
 import pl.przepisy.Projekt.repository.UsersRecipesRepository;
 
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -34,6 +36,7 @@ public class UserRecipesService {
         userRecipesToUpdate.setRecipe(updatedUserRecipes.getRecipe());
         return usersRecipesRepository.save(userRecipesToUpdate);
     }
+
     public userRecipes getUserRecipesByRecipeId(Long id) {
         return usersRecipesRepository.getUserRecipesByRecipeId(id);
     }
@@ -42,4 +45,10 @@ public class UserRecipesService {
         return usersRecipesRepository.getUserRecipesByUserId(id);
     }
 
+    public List<userRecipes> getAllUserRecipes() {
+        return usersRecipesRepository.findAll();
+    }
+
+    public void saveUserRecipe(Long id, Long recipeId) {
+    }
 }

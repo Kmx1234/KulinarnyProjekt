@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Przepisów</title>
+</head>
+<body>
+<h1>Lista Przepisów</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nazwa Przepisu</th>
+        <th>Autor</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iteracja przez listę przepisów i wyświetlenie ich -->
+    <tr th:each="userRecipe : ${userRecipes}">
+        <td th:text="${userRecipe.recipe.getTitle()}"></td>
+        <td th:text="${userRecipe.user.getLogin()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

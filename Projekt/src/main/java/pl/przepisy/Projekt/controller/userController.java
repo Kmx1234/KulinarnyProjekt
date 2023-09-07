@@ -52,20 +52,4 @@ private final UserService userService;
             return "redirect:/User/login";
         }
     }
-        @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
-        @GetMapping("/{id}")
-    public ResponseEntity<user> getUserById(@PathVariable Long id) {
-        user user = userService.findById(id);
-        return user != null ? ResponseEntity.ok(user) : ResponseEntity.notFound().build();
-    }
-        @PutMapping("/{id}")
-    public ResponseEntity<user> updateUser(@PathVariable Long id, @Valid @RequestBody user user) {
-        user.setId(id);
-        user updatedUser = userService.update(user);
-        return updatedUser != null ? ResponseEntity.ok(updatedUser) : ResponseEntity.notFound().build();
-    }
 }

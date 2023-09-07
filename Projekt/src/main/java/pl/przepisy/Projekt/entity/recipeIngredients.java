@@ -20,4 +20,6 @@ public class recipeIngredients {
     @JoinColumn(name = "recipe_id")
     private recipe recipe;
 
+    public void setIngredients(recipeIngredients ingredients) {
+    }
 }

@@ -11,6 +11,7 @@ public class IngredientsService {
 
     private IngredientsService ingredientsService;
 
+
     public recipeIngredients create(@Valid recipeIngredients ingredients) {
         return ingredientsService.create(ingredients);
     }
@@ -31,4 +32,7 @@ public class IngredientsService {
         ingredientsService.deleteIngredients(id);
     }
 
+    public void save(recipeIngredients recipeIngredients) {
+        ingredientsService.save(recipeIngredients);
+    }
 }

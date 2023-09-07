@@ -19,7 +19,24 @@
         <input type="number" id="quantity" name="quantity" required>
     </div>
 
-    <button type="submit">Dodaj Składnik</button>
+    <div>
+        <label for="unit">Jednostka:</label>
+        <input type="checkbox" id="unit" name="unit" value="g">g
+        <input type="checkbox" id="unit_ml" name="unit" value="ml">ml
+        <input type="checkbox" id="unit_szt" name="unit" value="szt">szt
+    </div>
+    <div>
+        <!-- Wyświetlanie wcześniej zapisanych składników -->
+        <h2>Wcześniej dodane składniki:</h2>
+        <ul>
+            <li th:each="ingredient : ${ingredientsList}">
+                <span th:text="${ingredient.name}"></span>
+                <!-- Dodaj wyświetlanie innych właściwości składnika, jeśli są dostępne -->
+            </li>
+        </ul>
+    </div>
+    <button type="submit">Dodaj składnik</button>
+    <button type="button" onclick="window.location.href='/addIngredients/finish'">Powrót</button>
 </form>
 </body>
 </html>

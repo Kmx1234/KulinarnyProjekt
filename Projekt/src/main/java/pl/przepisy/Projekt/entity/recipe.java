@@ -25,4 +25,10 @@ public class recipe {
     @JoinColumn(name = "user_id")
     private user user;
 
+    @PostPersist
+    public void postPersist() {
+        userRecipes newUserRecipe = new userRecipes();
+        newUserRecipe.setUser(this.user); // Ustaw użytkownika z przepisu
+        newUserRecipe.setRecipe(this);
+    }
 }
