@@ -8,6 +8,8 @@ import java.util.List;
 public interface RecipeRepository extends JpaRepository<recipe, Long> {
     List<recipe> getRecipeByUserId(Long id);
 
+    void deleteById(Long id);
+
     recipe save(recipe recipe);
 
 

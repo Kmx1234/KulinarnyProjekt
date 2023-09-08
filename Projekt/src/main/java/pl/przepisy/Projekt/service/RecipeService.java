@@ -32,7 +32,7 @@ public List<recipe> getRecipesByUserId(Long userId) {
         return recipeRepository.save(recipeToUpdate);
     }
 
-    public void deleteRecipe(Long recipeId) {
+    public void deleteById(Long recipeId) {
         recipeRepository.deleteById(recipeId);
     }
 

@@ -20,8 +20,10 @@
         <td th:text="${recipe.title}"></td>
         <td th:text="${recipe.description}"></td>
         <td>
-            <a th:href="@{/userRecipes/edit/{id}(id=${recipe.id})}">Edytuj</a>
-            <a th:href="@{/userRecipes/delete/{id}(id=${recipe.id})}">Usuń</a>
+            <form th:action="@{/userRecipe/delete}" method="post">
+                <input type="hidden" name="recipeId" th:value="${recipe.id}" />
+                <button type="submit">Usuń</button>
+            </form>
         </td>
     </tr>
     </tbody>
