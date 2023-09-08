@@ -2,7 +2,7 @@ package pl.przepisy.Projekt.controller;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,11 +15,11 @@ import pl.przepisy.Projekt.entity.user;
 import pl.przepisy.Projekt.service.RecipeService;
 
 @Controller
-@RequiredArgsConstructor
 @RequestMapping("/addRecipe")
 public class recipeController {
+    @Autowired
+    private RecipeService recipeService;
 
-    private final RecipeService recipeService;
 
     @GetMapping("/createRecipe")
     public String showRecipeForm(Model model, HttpSession session) {
@@ -39,6 +39,6 @@ public class recipeController {
         recipe.setUser(user);
         recipeService.save(recipe);
 
-        return "redirect:/addIngredients/createIngredients"; // Przekierowanie użytkownika z powrotem do formularza po zapisaniu przepisu
+        return "redirect:/dashboard";
     }
 }

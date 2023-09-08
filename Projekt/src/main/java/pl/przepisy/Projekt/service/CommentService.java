@@ -1,8 +1,7 @@
 package pl.przepisy.Projekt.service;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import pl.przepisy.Projekt.entity.comment;
 import pl.przepisy.Projekt.entity.recipe;
 import pl.przepisy.Projekt.repository.CommentRepository;
@@ -11,10 +10,9 @@ import java.util.List;
 
 
 @Service
-@RequiredArgsConstructor
 public class CommentService {
-
-    private final CommentRepository commentRepository;
+@Autowired
+    private  CommentRepository commentRepository;
 
     public void saveComment(comment comment) {
         commentRepository.save(comment);
@@ -48,19 +46,19 @@ public class CommentService {
         return commentRepository.getCommentByUserId(id);
     }
 
-    public double calculateAverageRatingForRecipe(recipe recipe) {
-        List<comment> commentsForRecipe = commentRepository.findByRatedRecipe(recipe);
-        if (commentsForRecipe.isEmpty()) {
-            return 0.0; // Brak komentarzy, średnia ocena wynosi 0.
-        }
-
-        double totalRating = 0;
-        for (comment comment : commentsForRecipe) {
-            totalRating += comment.getScoreValue();
-        }
-
-        return totalRating / commentsForRecipe.size();
-    }
+//    public double calculateAverageRatingForRecipe(recipe recipe) {
+//        List<comment> commentsForRecipe = commentRepository.findByRatedRecipe(recipe);
+//        if (commentsForRecipe.isEmpty()) {
+//            return 0.0; // Brak komentarzy, średnia ocena wynosi 0.
+//        }
+//
+//        double totalRating = 0;
+//        for (comment comment : commentsForRecipe) {
+//            totalRating += comment.getScoreValue();
+//        }
+//
+//        return totalRating / commentsForRecipe.size();
+//    }
 
 
 }

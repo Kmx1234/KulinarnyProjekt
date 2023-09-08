@@ -3,6 +3,7 @@ package pl.przepisy.Projekt.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 @Data
 @NoArgsConstructor
@@ -13,6 +14,8 @@ public class comment {
     private Long id;
 
     private String content;
+    @Range(min = 1, max = 5)
+    private int score;
 
     @ManyToOne
     @JoinColumn(name = "recipe_id")
@@ -21,19 +24,4 @@ public class comment {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private user user;
-
-    @ManyToOne
-    @JoinColumn(name = "rated_recipe_id")
-    private recipe ratedRecipe;
-
-    public comment(String content, recipe recipe, user user, recipe ratedRecipe) {
-        this.content = content;
-        this.recipe = recipe;
-        this.user = user;
-        this.ratedRecipe = ratedRecipe;
-    }
-
-    public double getScoreValue() {
-        return ratedRecipe.getScore();
-    }
 }

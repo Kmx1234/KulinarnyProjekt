@@ -1,15 +1,15 @@
 package pl.przepisy.Projekt.service;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.przepisy.Projekt.entity.user;
 import pl.przepisy.Projekt.repository.UserRepository;
 
 
 @Service
-@RequiredArgsConstructor
 public class UserService {
-    private final UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     public user create(user user) {
         return userRepository.save(user);

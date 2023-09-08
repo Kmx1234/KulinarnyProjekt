@@ -1,26 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <title>Lista Przepisów</title>
 </head>
 <body>
 <h1>Lista Przepisów</h1>
-
 <table>
     <thead>
     <tr>
-        <th>Nazwa Przepisu</th>
+        <th>Tytuł</th>
+        <th>Opis</th>
         <th>Autor</th>
+        <th>Składniki</th>
     </tr>
     </thead>
     <tbody>
-    <!-- Iteracja przez listę przepisów i wyświetlenie ich -->
-    <tr th:each="userRecipe : ${userRecipes}">
-        <td th:text="${userRecipe.recipe.getTitle()}"></td>
-        <td th:text="${userRecipe.user.getLogin()}"></td>
-    </tr>
+    <!-- Pętla wyświetlająca przepisy -->
+    <th:block th:each="recipe : ${allRecipes}">
+        <tr>
+            <td th:text="${recipe.title}"></td>
+            <td th:text="${recipe.description}"></td>
+            <td th:text="${recipe.user.login}"></td>
+            <td th:text="${recipe.ingredients}"></td>
+        </tr>
+    </th:block>
     </tbody>
 </table>
+<a href="/home">Powrót do panelu głównego</a>
 </body>
 </html>

@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Utwórz przepis</title>
+    <script>
+        function dodajSkładnik() {
+            const składnikContainer = document.getElementById("składnik-container");
+            const nowySkładnik = document.createElement("div");
+
+            nowySkładnik.innerHTML = `
+                <label for="ingredients">Składnik:</label>
+                <input type="text" name="ingredients" required>
+            `;
+
+            składnikContainer.appendChild(nowySkładnik);
+        }
+    </script>
 </head>
 <body>
 <h1>Utwórz przepis</h1>
@@ -13,7 +26,14 @@
     <label for="description">Opis:</label>
     <textarea id="description" name="description" placeholder="Opis przepisu" required></textarea>
     <br>
+    <div id="składnik-container">
+        <label for="ingredients">Składnik:</label>
+        <input type="text" name="ingredients" required>
+    </div>
+    <button type="button" onclick="dodajSkładnik()">Dodaj składnik</button>
+    <button type="button" onclick="window.location.href='/dashboard'">Powrót</button>
     <button type="submit">Zapisz przepis</button>
 </form>
 </body>
 </html>
+

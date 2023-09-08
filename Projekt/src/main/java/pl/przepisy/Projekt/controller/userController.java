@@ -14,10 +14,9 @@ import pl.przepisy.Projekt.repository.UserRepository;
 import pl.przepisy.Projekt.service.UserService;
 @Controller
 @RequestMapping("/User")
-@RequiredArgsConstructor
 public class userController {
-
-private final UserService userService;
+@Autowired
+private UserService userService;
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {

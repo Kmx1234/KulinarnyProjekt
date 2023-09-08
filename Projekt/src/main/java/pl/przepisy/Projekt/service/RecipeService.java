@@ -1,21 +1,19 @@
 package pl.przepisy.Projekt.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.przepisy.Projekt.entity.recipe;
 import pl.przepisy.Projekt.repository.RecipeRepository;
 
+import java.util.List;
+
 
 @Service
-@RequiredArgsConstructor
+
 public class RecipeService {
+    @Autowired
     private RecipeRepository recipeRepository;
 
-    @Autowired
-    public RecipeService(RecipeRepository recipeRepository) {
-        this.recipeRepository = recipeRepository;
-    }
 
     public recipe create(recipe recipe) {
         return recipeRepository.save(recipe);
@@ -55,5 +53,8 @@ public class RecipeService {
 
     public void save(recipe recipe) {
         recipeRepository.save(recipe);
+    }
+    public List<recipe> getAllRecipes() {
+        return recipeRepository.findAll();
     }
 }

@@ -21,6 +21,4 @@ public class user {
     @NotNull
     @Size(min = 3, max = 20)
     private String login;
-    @OneToMany(mappedBy = "user")
-    private List<userRecipes> usersRecipes;
 }
