@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Twoje przepisy</title>
+</head>
+<body>
+<h1>Twoje przepisy</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Tytuł</th>
+        <th>Opis</th>
+        <th>Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iteruj przez przepisy użytkownika i wyświetl je w tabeli -->
+    <tr th:each="recipe : ${userRecipes}">
+        <td th:text="${recipe.title}"></td>
+        <td th:text="${recipe.description}"></td>
+        <td>
+            <a th:href="@{/userRecipes/edit/{id}(id=${recipe.id})}">Edytuj</a>
+            <a th:href="@{/userRecipes/delete/{id}(id=${recipe.id})}">Usuń</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/dashboard">Powrót do panelu użytkownika</a>
+</body>
+</html>

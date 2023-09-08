@@ -15,40 +15,25 @@ public class RecipeService {
     private RecipeRepository recipeRepository;
 
 
-    public recipe create(recipe recipe) {
-        return recipeRepository.save(recipe);
-    }
-
-    public void deleteRecipe(Long id) {
-        recipeRepository.deleteById(id);
-    }
-
-    public recipe getRecipeById(Long id) {
-        return recipeRepository.getOne(id);
+public List<recipe> getRecipesByUserId(Long userId) {
+        return recipeRepository.getRecipeByUserId(userId);
     }
 
     public recipe updateRecipe(recipe updatedRecipe) {
         Long recipeId = updatedRecipe.getId();
 
         recipe existingRecipe = recipeRepository.findById(recipeId).orElse(null);
-        if (existingRecipe == null) {
-            throw new IllegalArgumentException("Recipe with ID " + recipeId + " not found.");
-        }
 
         recipe recipeToUpdate = existingRecipe;
         recipeToUpdate.setTitle(updatedRecipe.getTitle());
         recipeToUpdate.setDescription(updatedRecipe.getDescription());
-        recipeToUpdate.setScore(updatedRecipe.getScore());
+        recipeToUpdate.setIngredients(updatedRecipe.getIngredients());
 
         return recipeRepository.save(recipeToUpdate);
     }
 
-    public recipe getRecipeByUserId(Long id) {
-        return recipeRepository.getRecipeByUserId(id);
-    }
-
-    public recipe saveRecipe(recipe recipe) {
-        return recipeRepository.save(recipe);
+    public void deleteRecipe(Long recipeId) {
+        recipeRepository.deleteById(recipeId);
     }
 
     public void save(recipe recipe) {

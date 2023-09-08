@@ -1,6 +1,7 @@
 package pl.przepisy.Projekt.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,9 @@ private UserService userService;
         user user = userService.findByLogin(login);
 
         if (user != null && user.getPassword().equals(password)) {
-            request.getSession().setAttribute("user", user);
+            HttpSession httpSession = request.getSession(true);
+            httpSession.setAttribute("userId", user.getId());
+//            request.getSession().setAttribute("user", user);
             return "redirect:/dashboard";
         } else {
             return "redirect:/User/login";
