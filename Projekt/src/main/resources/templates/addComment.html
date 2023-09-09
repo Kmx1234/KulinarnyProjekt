@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj komentarz</title>
+</head>
+<body>
+<h1>Dodaj komentarz</h1>
+
+<form th:action="@{'/Comment/add/' + ${recipe.id}}" method="post">
+    <!-- Pole na treść komentarza -->
+    <div>
+        <label for="content">Treść komentarza:</label>
+        <textarea id="content" name="content" rows="4" cols="50" th:field="*{comment.content}"></textarea>
+
+    </div>
+
+    <!-- Przycisk do zatwierdzania komentarza -->
+    <div>
+        <button type="submit">Dodaj komentarz</button>
+    </div>
+</form>
+
+<!-- Link powrotu do przepisu -->
+<a th:href="'usersRecipes/list'">Powrót do przepisu</a>
+</body>
+</html>

@@ -13,6 +13,8 @@
         <th>Opis</th>
         <th>Autor</th>
         <th>Składniki</th>
+        <th>Komentarze</th>
+        <th>Akcje</th>
     </tr>
     </thead>
     <tbody>
@@ -22,9 +24,20 @@
             <td th:text="${recipe.description}"></td>
             <td th:text="${recipe.user.login}"></td>
             <td th:text="${recipe.ingredients}"></td>
+            <td>
+                <!-- Przycisk do dodawania komentarza -->
+                <a th:href="@{'/Comment/add/' + ${recipe.id}}" class="btn btn-primary">Dodaj komentarz</a>
+
+                <!-- Przycisk do wyświetlania komentarzy -->
+                <a th:href="@{'/Comment/list/' + ${recipe.id}}" class="btn btn-primary">Wyświetl komentarze</a>
+                <a th:href="@{'/rate-recipe?recipeId=' + ${recipe.id}}" class="btn btn-success">Oceń przepis</a>
+
+            </td>
         </tr>
     </th:block>
     </tbody>
+
+
 </table>
 <a href="/dashboard">Powrót do panelu głównego</a>
 </body>

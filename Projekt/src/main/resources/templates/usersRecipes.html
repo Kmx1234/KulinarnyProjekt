@@ -13,7 +13,7 @@
         <th>Opis</th>
         <th>Autor</th>
         <th>Składniki</th>
-        <th>Ocena</th>
+        <th>Komentarze</th>
     </tr>
     </thead>
     <tbody>
@@ -23,7 +23,9 @@
             <td th:text="${recipe.description}"></td>
             <td th:text="${recipe.user.login}"></td>
             <td th:text="${recipe.ingredients}"></td>
-            <td th:text="${recipe.score}"></td>
+            <td>
+                <a th:href="@{'/Comment/list/' + ${recipe.id}}" class="btn btn-primary">Wyświetl komentarze</a>
+            </td>
         </tr>
     </th:block>
     </tbody>

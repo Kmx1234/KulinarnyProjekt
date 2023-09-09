@@ -24,9 +24,11 @@
         <td th:text="${recipe.ingredients}"></td>
         <td th:text="${recipe.score}"></td>
         <td>
-            <form th:action="@{/userRecipe/edit/{recipeId}}" method="post">
+            <form th:action="@{/userRecipe/edit/{recipeId}(recipeId=${recipe.id})}" method="post">
                 <input type="hidden" name="recipeId" th:value="${recipe.id}" />
                 <button type="submit">Edytuj</button>
+            </form>
+
 <!--            <form th:action="@{/userRecipe/edit/{recipeId}}" method="post" th:object="${recipe}">-->
 <!--                <input type="hidden" name="recipeId" th:value="${recipe.id}" />-->
 <!--                <button type="submit">Edytuj</button>-->

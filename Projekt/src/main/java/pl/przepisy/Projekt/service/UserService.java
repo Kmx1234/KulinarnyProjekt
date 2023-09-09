@@ -14,17 +14,7 @@ public class UserService {
     public user create(user user) {
         return userRepository.save(user);
     }
-    public user update(user user) {
-        user existingUser = userRepository.findById(user.getId()).orElse(null);
-        if (existingUser == null) {
-            throw new IllegalArgumentException("User with ID " + user.getId() + " not found.");
-        }
-        user userToUpdate = existingUser;
-        userToUpdate.setLogin(user.getLogin());
-        userToUpdate.setPassword(user.getPassword());
-        userToUpdate.setEmail(user.getEmail());
-        return userRepository.save(userToUpdate);
-    }
+
     public user findById(Long id) {
         return userRepository.findById(id).orElse(null);
     }

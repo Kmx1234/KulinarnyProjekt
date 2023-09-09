@@ -6,15 +6,16 @@
 </head>
 <body>
 <h1>Edytuj przepis</h1>
-<form>
+<form th:action="@{/userRecipe/edit/{recipeId}}" th:object="${recipe}" method="post">
     <label for="title">Tytuł</label>
-    <input type="text" id="title" name="title" th:value="${recipe.title}"/>
+    <input type="text" id="title" name="title" th:field="*{title}"/>
     <label for="description">Opis</label>
-    <input type="text" id="description" name="description" th:value="${recipe.description}"/>
+    <input type="text" id="description" name="description" th:field="*{description}" />
     <label for="ingredients">Składniki</label>
-    <input type="text" id="ingredients" name="ingredients" th:value="${recipe.ingredients}"/>
+    <input type="text" id="ingredients" name="ingredients" th:field="*{ingredients}"/>
     <button type="submit">Zapisz</button>
     <a href="/dashboard">Powrót do panelu użytkownika</a>
 </form>
 </body>
 </html>
+

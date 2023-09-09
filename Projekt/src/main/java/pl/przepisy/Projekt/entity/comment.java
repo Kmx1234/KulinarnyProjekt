@@ -14,8 +14,6 @@ public class comment {
     private Long id;
 
     private String content;
-    @Range(min = 1, max = 5)
-    private int score;
 
     @ManyToOne
     @JoinColumn(name = "recipe_id")
