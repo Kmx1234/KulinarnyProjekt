@@ -27,4 +27,8 @@ public class UserService {
     public user findByLogin(String login) {
         return userRepository.findByLogin(login);
     }
+
+    public boolean existsByLogin(String login) {
+        return userRepository.existsByLogin(login);
+    }
 }

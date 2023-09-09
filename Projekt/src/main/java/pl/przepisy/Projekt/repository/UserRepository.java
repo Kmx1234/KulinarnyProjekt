@@ -5,4 +5,6 @@ import pl.przepisy.Projekt.entity.user;
 
 public interface UserRepository extends JpaRepository<user, Long> {
     user findByLogin(String login);
+
+    boolean existsByLogin(String login);
 }

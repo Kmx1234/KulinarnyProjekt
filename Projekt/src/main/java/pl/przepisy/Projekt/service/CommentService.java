@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pl.przepisy.Projekt.entity.comment;
 import pl.przepisy.Projekt.repository.CommentRepository;
 
+import java.util.List;
+
 
 @Service
 public class CommentService {
@@ -21,4 +23,7 @@ public void save(comment comment){
         commentRepository.save(comment);
     }
 
+    public List<comment> getCommentsForRecipe(Long recipeId) {
+        return commentRepository.findByRecipeId(recipeId);
+    }
 }

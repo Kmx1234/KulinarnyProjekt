@@ -29,7 +29,7 @@
                 <a th:href="@{'/Comment/add/' + ${recipe.id}}" class="btn btn-primary">Dodaj komentarz</a>
 
                 <!-- Przycisk do wyświetlania komentarzy -->
-                <a th:href="@{'/Comment/list/' + ${recipe.id}}" class="btn btn-primary">Wyświetl komentarze</a>
+                <a th:href="@{/usersComment/list/{recipeId}(recipeId=${recipe.id})}">View Comments</a>
                 <a th:href="@{'/rate-recipe?recipeId=' + ${recipe.id}}" class="btn btn-success">Oceń przepis</a>
 
             </td>

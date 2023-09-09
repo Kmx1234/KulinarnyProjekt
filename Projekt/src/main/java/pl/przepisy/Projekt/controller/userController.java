@@ -25,17 +25,32 @@ private UserService userService;
         return "registration";
     }
 
-    @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") @Valid user user, BindingResult bindingResult, HttpServletRequest request) {
-        if (bindingResult.hasErrors()) {
-            return "registration";
-        }
-        userService.save(user);
-
-
-        return "redirect:/User/login";
+//    @PostMapping("/register")
+//    public String registerUser(@ModelAttribute("user") @Valid user user, BindingResult bindingResult, HttpServletRequest request) {
+//        if (bindingResult.hasErrors()) {
+//            return "registration";
+//        }
+//        userService.save(user);
+//
+//
+//        return "redirect:/User/login";
+//    }
+@PostMapping("/register")
+public String registerUser(@ModelAttribute("user") @Valid user user, BindingResult bindingResult, Model model) {
+    if (userService.existsByLogin(user.getLogin())) {
+        model.addAttribute("loginError", "Podany login już istnieje");
+        return "registration";
     }
 
+    if (bindingResult.hasErrors()) {
+
+        return "registration";
+    }
+
+    userService.save(user);
+
+    return "redirect:/User/login";
+}
     @GetMapping("/login")
     public String showLoginForm() {
         return "login";
