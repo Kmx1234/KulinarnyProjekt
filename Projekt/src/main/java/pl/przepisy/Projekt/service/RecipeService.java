@@ -39,9 +39,8 @@ public class RecipeService {
     public void save(recipe recipe) {
         recipeRepository.save(recipe);
     }
-    public List<recipe> getAllRecipes() {
-        return recipeRepository.findAll();
-    }
+
+
     public recipe getRecipeById(Long recipeId) {
         return recipeRepository.findById(recipeId).orElse(null);
     }

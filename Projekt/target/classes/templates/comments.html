@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments for Recipe</title>
+</head>
+<body>
+<h1>Comments for Recipe</h1>
+<ul>
+
+    <th:block th:each="comment : ${allComments}">
+        <li>
+            <strong th:text="${comment.user.login}"></strong>: <span th:text="${comment.content}"></span>
+        </li>
+    </th:block>
+</ul>
+</body>
+</html>

@@ -47,47 +47,18 @@ public class userRecipeController {
 
     @GetMapping("/edit/{recipeId}")
     public String editRecipe(@PathVariable Long recipeId, Model model, HttpSession session) {
-//        Long userId = (Long) session.getAttribute("userId");
-//        if (session.getAttribute("userId") == null) {
-//            System.out.println("Nie jesteś zalogowany");
-//        }
-
+        Long userId = (Long) session.getAttribute("userId");
         recipe recipe = recipeService.getRecipeById(recipeId);
-        model.addAttribute("recipe", recipe);
+               model.addAttribute("recipe", recipe);
 
         return "editRecipe";
     }
-
-
     @PostMapping("/edit/{recipeId}")
-    public String editRecipe(@PathVariable Long recipeId, @Valid @ModelAttribute("recipe") recipe recipe, BindingResult bindingResult, HttpSession session) {
+    public String editRecipe(@PathVariable@RequestParam("recipeId") Long recipeId, @Valid @ModelAttribute("recipe") recipe recipe, BindingResult bindingResult, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
-        if (session.getAttribute("userId") == null) {
-            System.out.println("Nie jesteś zalogowany");
-        }
-
-        if (bindingResult.hasErrors()) {
-            return "editRecipe";
-        }
-//        recipeService.getRecipeById(recipeId);
+        recipeService.getRecipeById(recipeId);
         recipeService.updateRecipe(recipe);
 
         return "redirect:/userRecipe/list";
     }
 }
-//    @PostMapping("/edit/{recipeId}")
-//    public String editRecipe(@PathVariable Long recipeId, @Valid @ModelAttribute("recipe") recipe recipe, BindingResult bindingResult, HttpSession session) {
-//        Long userId = (Long) session.getAttribute("userId");
-//        if (session.getAttribute("userId") == null) {
-//            System.out.println("Nie jesteś zalogowany");
-//        }
-//
-//        if (bindingResult.hasErrors()) {
-//            return "editRecipe";
-//        }
-//
-//        recipeService.updateRecipe(recipe);
-//
-//        return "redirect:/userRecipe/list";
-//    }
-//}
