@@ -11,16 +11,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public user create(user user) {
-        return userRepository.save(user);
-    }
-
-    public user findById(Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
-    public void deleteById(Long id) {
-        userRepository.deleteById(id);
-    }
     public user save(user user) {
         return userRepository.save(user);
     }

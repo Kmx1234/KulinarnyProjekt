@@ -1,21 +1,65 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="pl">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Edytuj przepis</title>-->
+
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Edytuj przepis</h1>-->
+<!--<form th:action="@{'/userRecipe/edit/' + ${recipeId}}" th:object="${recipe}" method="post">-->
+<!--    <label for="title">Tytuł</label>-->
+<!--    <input type="text" id="title" name="title" th:field="*{title}"/>-->
+<!--    <label for="description">Opis</label>-->
+<!--    <input type="text" id="description" name="description" th:field="*{description}" />-->
+<!--    <label for="ingredients">Składniki</label>-->
+<!--    <input type="text" id="ingredients" name="ingredients" th:field="*{ingredients}"/>-->
+<!--    <button type="submit">Zapisz</button>-->
+<!--    <a href="/dashboard">Powrót do panelu użytkownika</a>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <title>Edytuj przepis</title>
+    <script>
+        function dodajSkładnik() {
+            const składnikContainer = document.getElementById("składnik-container");
+            const nowySkładnik = document.createElement("div");
+
+            nowySkładnik.classList.add("składnik-entry"); // Dodaj klasę do nowego składnika
+
+            nowySkładnik.innerHTML = `
+                <label for="ingredients">Składnik:</label>
+                <input type="text" name="ingredients" required>
+            `;
+
+            składnikContainer.appendChild(nowySkładnik);
+        }
+    </script>
+    <style>
+        .składnik-entry {
+            margin-top: 10px; /* Dodaj odstęp między składnikami */
+        }
+    </style>
 </head>
 <body>
 <h1>Edytuj przepis</h1>
-<form th:action="@{/userRecipe/edit/{recipeId}}" th:object="${recipe}" method="post">
+<form th:action="@{'/userRecipe/edit/' + ${recipeId}}" th:object="${recipe}" method="post">
     <label for="title">Tytuł</label>
     <input type="text" id="title" name="title" th:field="*{title}"/>
     <label for="description">Opis</label>
     <input type="text" id="description" name="description" th:field="*{description}" />
-    <label for="ingredients">Składniki</label>
-    <input type="text" id="ingredients" name="ingredients" th:field="*{ingredients}"/>
+    <div id="składnik-container">
+        <label for="ingredients">Składnik:</label>
+        <input type="text" name="ingredients" required>
+    </div>
+    <button type="button" onclick="dodajSkładnik()">Dodaj składnik</button>
     <button type="submit">Zapisz</button>
     <a href="/dashboard">Powrót do panelu użytkownika</a>
 </form>
 </body>
 </html>
-

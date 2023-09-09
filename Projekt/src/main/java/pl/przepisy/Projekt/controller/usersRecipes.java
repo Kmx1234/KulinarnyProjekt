@@ -4,11 +4,8 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import pl.przepisy.Projekt.entity.recipe;
 import pl.przepisy.Projekt.repository.RecipeRepository;
 
@@ -39,4 +36,19 @@ public class usersRecipes {
             return "usersRecipes"; // Użytkownik nie jest zalogowany
         }
     }
+//    @PostMapping("/rate")
+//    public String rateRecipe(@RequestParam("recipeId") Long recipeId, @RequestParam("rating") double rating, HttpSession session) {
+//        user user = (user) session.getAttribute("user");
+//        if (user == null) {
+//            // Obsługa przypadku, gdy użytkownik nie jest zalogowany
+//            return "redirect:/User/login"; // Przekieruj użytkownika na stronę logowania
+//        }
+//        recipe recipe = recipeService.getRecipeById(recipeId);
+//        double averageRating = recipe.getAverageRating();
+//        int numberOfRatings = recipe.getComments().size();
+//        double newAverageRating = (averageRating * numberOfRatings + rating) / (numberOfRatings + 1);
+//        recipe.setAverageRating(newAverageRating);
+//        recipeService.save(recipe);
+//        return "redirect:/dashboard";
+//    }
 }
