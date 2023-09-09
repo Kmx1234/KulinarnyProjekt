@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj przepis</title>
+</head>
+<body>
+<h1>Edytuj przepis</h1>
+<form>
+    <label for="title">Tytuł</label>
+    <input type="text" id="title" name="title" th:value="${recipe.title}"/>
+    <label for="description">Opis</label>
+    <input type="text" id="description" name="description" th:value="${recipe.description}"/>
+    <label for="ingredients">Składniki</label>
+    <input type="text" id="ingredients" name="ingredients" th:value="${recipe.ingredients}"/>
+    <button type="submit">Zapisz</button>
+    <a href="/dashboard">Powrót do panelu użytkownika</a>
+</form>
+</body>
+</html>

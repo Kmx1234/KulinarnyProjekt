@@ -48,7 +48,8 @@ private UserService userService;
         if (user != null && user.getPassword().equals(password)) {
             HttpSession httpSession = request.getSession(true);
             httpSession.setAttribute("userId", user.getId());
-//            request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("user", user);
+            System.out.println("Zalogowano użytkownika: " + user.getLogin());
             return "redirect:/dashboard";
         } else {
             return "redirect:/User/login";

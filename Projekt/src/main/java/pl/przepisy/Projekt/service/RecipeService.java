@@ -15,7 +15,7 @@ public class RecipeService {
     private RecipeRepository recipeRepository;
 
 
-public List<recipe> getRecipesByUserId(Long userId) {
+    public List<recipe> getRecipesByUserId(Long userId) {
         return recipeRepository.getRecipeByUserId(userId);
     }
 
@@ -41,5 +41,8 @@ public List<recipe> getRecipesByUserId(Long userId) {
     }
     public List<recipe> getAllRecipes() {
         return recipeRepository.findAll();
+    }
+    public recipe getRecipeById(Long recipeId) {
+        return recipeRepository.findById(recipeId).orElse(null);
     }
 }

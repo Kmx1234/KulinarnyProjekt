@@ -1,13 +1,12 @@
 package pl.przepisy.Projekt.controller;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import pl.przepisy.Projekt.entity.recipe;
 import pl.przepisy.Projekt.service.RecipeService;
 
@@ -23,8 +22,8 @@ public class userRecipeController {
     @GetMapping("/list")
     public String listUserRecipes(Model model, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
-if (session.getAttribute("userId") == null) {
-    System.out.println("Nie jesteś zalogowany");
+        if (session.getAttribute("userId") == null) {
+            System.out.println("Nie jesteś zalogowany");
         }
 
 
@@ -33,6 +32,7 @@ if (session.getAttribute("userId") == null) {
         model.addAttribute("userRecipes", userRecipes);
         return "userRecipes";
     }
+
     @PostMapping("/delete")
     public String deleteUserRecipe(@RequestParam("recipeId") Long recipeId, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
@@ -40,7 +40,35 @@ if (session.getAttribute("userId") == null) {
             System.out.println("Nie jesteś zalogowany");
         }
 
-            recipeService.deleteById(recipeId);
+        recipeService.deleteById(recipeId);
+
+        return "redirect:/userRecipe/list";
+    }
+
+    @GetMapping("/edit/{recipeId}")
+    public String editRecipe(@RequestParam("recipeId") String recipeId, Model model, HttpSession session){
+        Long userId = (Long) session.getAttribute("userId");
+        if (session.getAttribute("userId") == null) {
+            System.out.println("Nie jesteś zalogowany");
+        }
+
+        recipe recipe = recipeService.getRecipeById(Long.valueOf(recipeId));
+        model.addAttribute("recipe", recipe);
+
+        return "editRecipe";
+    }
+    @PostMapping("/edit/{recipeId}")
+    public String editRecipe(@Valid @ModelAttribute("recipe") recipe recipe, BindingResult bindingResult, HttpSession session) {
+        Long userId = (Long) session.getAttribute("userId");
+        if (session.getAttribute("userId") == null) {
+            System.out.println("Nie jesteś zalogowany");
+        }
+
+        if (bindingResult.hasErrors()) {
+            return "editRecipe";
+        }
+
+        recipeService.updateRecipe(recipe);
 
         return "redirect:/userRecipe/list";
     }

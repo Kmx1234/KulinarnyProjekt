@@ -5,7 +5,7 @@
     <title>Lista Przepisów</title>
 </head>
 <body>
-<h1>Lista Przepisów</h1>
+<h1>Lista Przepisów dla zalogowanych</h1>
 <table>
     <thead>
     <tr>
@@ -13,7 +13,6 @@
         <th>Opis</th>
         <th>Autor</th>
         <th>Składniki</th>
-        <th>Ocena</th>
     </tr>
     </thead>
     <tbody>
@@ -23,11 +22,10 @@
             <td th:text="${recipe.description}"></td>
             <td th:text="${recipe.user.login}"></td>
             <td th:text="${recipe.ingredients}"></td>
-            <td th:text="${recipe.score}"></td>
         </tr>
     </th:block>
     </tbody>
 </table>
-<a href="/home">Powrót do panelu głównego</a>
+<a href="/dashboard">Powrót do panelu głównego</a>
 </body>
 </html>

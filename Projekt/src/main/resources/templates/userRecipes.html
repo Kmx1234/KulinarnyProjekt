@@ -11,18 +11,30 @@
     <tr>
         <th>Tytuł</th>
         <th>Opis</th>
+        <th>Składniki</th>
+        <th>Ocena</th>
         <th>Akcje</th>
+
     </tr>
     </thead>
     <tbody>
-    <!-- Iteruj przez przepisy użytkownika i wyświetl je w tabeli -->
     <tr th:each="recipe : ${userRecipes}">
         <td th:text="${recipe.title}"></td>
         <td th:text="${recipe.description}"></td>
+        <td th:text="${recipe.ingredients}"></td>
+        <td th:text="${recipe.score}"></td>
         <td>
+            <form th:action="@{/userRecipe/edit/{recipeId}}" method="post">
+                <input type="hidden" name="recipeId" th:value="${recipe.id}" />
+                <button type="submit">Edytuj</button>
+<!--            <form th:action="@{/userRecipe/edit/{recipeId}}" method="post" th:object="${recipe}">-->
+<!--                <input type="hidden" name="recipeId" th:value="${recipe.id}" />-->
+<!--                <button type="submit">Edytuj</button>-->
             <form th:action="@{/userRecipe/delete}" method="post">
                 <input type="hidden" name="recipeId" th:value="${recipe.id}" />
                 <button type="submit">Usuń</button>
+<!--            </form>-->
+            </form>
             </form>
         </td>
     </tr>
